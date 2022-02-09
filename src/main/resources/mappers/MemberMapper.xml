@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.company.my.MemberMapper">
+
+	<!-- 회원추가  -->
+	<insert id="insert">
+		insert into member
+		(userid, userpw, nicname, username, email, tel, zipcode, addr, addrdetail, emailauth, simplejoin)
+		values
+		(#{userid}, #{userpw}, #{nicname}, #{username}, #{email}, #{tel}, #{zipcode}, #{addr}, #{addrdetail}, #{emailauth}, #{simplejoin})	
+	</insert>
+	
+	<!-- 회원수정(이메일인증, 간편가입 포함) -->
+	<update id="update">
+		update member 
+		set userpw= #{userpw},
+		nicname= #{nicname},
+		username= #{username},
+		email= #{email},
+		tel= #{tel},
+		zipcode= #{zipcode},
+		addr= #{addr},
+		addrdetail= #{addrdetail},
+		emailauth= #{emailauth},
+		simplejoin= #{simplejoin}
+		where userid= #{userid}
+	</update>
+	
+	<!-- 회원수정(이메일인증, 간편가입 포함X) -->
+	<update id="update2">
+		update member 
+		set userpw= #{userpw},
+		nicname= #{nicname},
+		username= #{username},
+		tel=#{tel},
+		email= #{email},
+		zipcode= #{zipcode},
+		addr=  #{addr},
+		addrdetail= #{addrdetail}
+		where userid= #{userid}	
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="delete">
+		delete from member
+		where userid= #{userid}
+	</delete>
+	
+	<!-- 회원 한건조회 -->
+	<select id="selectOne" resultType="Member">
+		select * from member
+		where userid= #{userid}	
+	</select>
+	
+	<!-- 회원 전체조회 -->
+	<select id="selectList" resultType="Member">
+		select * from member
+	</select>	
+	
+	<update id="update_emailAuth">
+		update member 
+		set emailauth='1'
+		where userid=#{userid}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

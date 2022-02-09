@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.company.my.InquiryMapper">
+
+	<insert id="insert">
+		<!--insert문을 실행하기전에 시퀀스를 이용하여 inquiryno을 구하고 미리 inquiry객체에 set -->
+		<selectKey keyProperty="inquiryno" resultType="int" order="BEFORE">
+			select inq_no.nextval from  dual
+		</selectKey>
+		insert into inquiry
+		(inquiryno, userid, subject, content)
+		values
+		(#{inquiryno}, #{userid}, #{subject}, #{content})	
+	</insert>
+	
+	<update id="update">
+		update inquiry 
+		set subject=#{subject},
+		content= #{content}
+		where inquiryno=#{inquiryno}	
+	</update>
+	
+	<delete id="delete">
+		delete from inquiry
+		where inquiryno=#{inquiryno}
+	</delete>
+	
+	
+	
+	<!-- 전체게시물수 구하기  오라클 -->
+	<select id="selectTotcnt" resultType="int">
+		select count(*) totcnt 
+		from inquiry
+   		where 1=1
+	</select>
+
+	<select id="selectList" resultType="Inquiry">
+		select * 
+		from(select rownum rnum, i.*
+		        from (select * from inquiry
+		        		where 1=1  
+		                 order by inquiryno desc) i)
+		where rnum between #{startNum} and #{endNum}	
+	</select>
+
+	
+	<select id="selectOne" resultType="Inquiry">
+		select * from inquiry
+		where inquiryno=#{inquiryno}	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+</mapper>

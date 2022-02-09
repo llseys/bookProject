@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 널 허용하기 : 매퍼에서 게터를 이용해 값을 가져올때 null이 가능  -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="org.company.my.dto.Member" alias="Member"/>
+		<typeAlias type="org.company.my.dto.Inquiry" alias="Inquiry"/>
+		<typeAlias type="org.company.my.dto.Inquiryfile" alias="Inquiryfile"/>
+		<typeAlias type="org.company.my.dto.Book" alias="Book"/>
+		<typeAlias type="org.company.my.dto.Review" alias="Review"/>
+		<typeAlias type="org.company.my.dto.Reviewfile" alias="Reviewfile"/>
+		<typeAlias type="org.company.my.dto.Reply" alias="Reply"/>	
+	</typeAliases>
+	
+
+	
+
+</configuration>
