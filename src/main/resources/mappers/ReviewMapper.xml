@@ -12,7 +12,7 @@
    		and isbn=#{isbn}  
 	</select>
 
-	<select id="selectList" resultType="Review">
+<!-- 	<select id="selectList" resultType="Review">
 		select * 
 		from(select rownum rnum, r.*
 		        from (select * from review
@@ -20,9 +20,23 @@
 		        		and isbn=#{isbn}   
 		                 order by reviewno desc) r)
 		where rnum between #{startNum} and #{endNum}	
-	</select>
+	</select> -->
+	
+	<select id="selectList" resultType="Review">
+		select * from review
+		where isbn=#{isbn}
+		limit #{startNum}, #{perPage}  	
+	</select> 
+	
+	
+	
+	
+	
+	
+	
+	
 
-	<insert id="insert">
+<!-- 	<insert id="insert">
 		<selectKey keyProperty="reviewno" resultType="int" order="BEFORE">
 			select rv_no.nextval from  dual
 		</selectKey>
@@ -31,6 +45,23 @@
 		values
 		(#{reviewno}, #{isbn}, #{userid}, #{subject}, #{content})	
 	</insert>
+ -->
+
+	<!-- useGeneratedKeys : 자동으로 생성된 키를 board의 bnum에 세팅 -->
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="reviewno"> 
+		insert into review(isbn, userid, subject, content)
+		values(#{isbn}, #{userid}, #{subject}, #{content})
+	</insert>
+
+
+
+
+
+
+
+
+
+
 
 	<select id="selectOne" resultType="Review">
 		select * from review

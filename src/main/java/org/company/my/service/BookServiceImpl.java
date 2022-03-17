@@ -210,8 +210,8 @@ public class BookServiceImpl implements BookService{
 		page.setTotPage(totPage);
 		
 		// 3) 시작번호
-		int startNum = (curPage -1)*perPage+1; // 오라클을 1번부터 시작
-//		int startNum = (curPage -1)*perPage; //mysql은 0번부터시작해야함
+//		int startNum = (curPage -1)*perPage+1; // 오라클을 1번부터 시작
+		int startNum = (curPage -1)*perPage; //mysql은 0번부터시작해야함
 		page.setStartNum(startNum);
 		// 4) 끝번호
 		int endNum = startNum + perPage -1; //시작번호 + 한페이지당 게시물 수 -1
@@ -322,8 +322,8 @@ public class BookServiceImpl implements BookService{
 		page.setTotPage(totPage);
 		
 		// 3) 시작번호
-		int startNum = (curPage -1)*perPage+1; // 오라클을 1번부터 시작
-//		int startNum = (curPage -1)*perPage; //mysql은 0번부터시작해야함
+//		int startNum = (curPage -1)*perPage+1; // 오라클을 1번부터 시작
+		int startNum = (curPage -1)*perPage; //mysql은 0번부터시작해야함
 		page.setStartNum(startNum);
 		// 4) 끝번호
 		int endNum = startNum + perPage -1; //시작번호 + 한페이지당 게시물 수 -1

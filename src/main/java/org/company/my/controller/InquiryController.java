@@ -44,7 +44,7 @@ public class InquiryController {
 		return "inquiry/add";
 	}
 	
-	// 문의글추가 이동
+	// 
 	@PostMapping("add")
 	public String add(@ModelAttribute Inquiry inq, RedirectAttributes rattr) throws Exception {	
 		Map<String, Object> result = inquiryService.insert(inq);

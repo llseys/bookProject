@@ -9,6 +9,7 @@
 <html>
 <head>
 <title>Home</title>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,6 +30,23 @@
 			display: flex;
 			justify-content: center;
 		}
+		
+		
+		#under{
+			margin: 10px auto;
+		
+		}
+		
+		#und{
+			width:50%;
+			float:right;
+			
+		
+		}
+
+		
+		
+		
 
 	</style>
 	
@@ -36,9 +54,55 @@
 	<script type="text/javascript">
 
 		$(function() {
+			
+			const userid = '${sessionScope.userid}';
+			if(userid == ''){ //로그인 전]
+				$('#logout').hide();
+				$('#loginInfo').hide();
+			}else{ //로그인 후
+				$('#login').hide();
+			}
+			
+			
+			
 			$('#bestbook').on('click', function() {
-				alert('ㅇㅇ');
+				location.href='${path}/book/bestbook'
 			});
+			
+			$('#newbook').on('click', function() {
+				location.href='${path}/book/newbook'
+			});
+			
+			$('#inquirygo').on('click', function() {
+				location.href='${path}/inquiry/list'
+			});
+			
+			$('#inquirygo1').on('click', function() {
+				location.href='${path}/inquiry/list'
+			});
+			
+			$('#login').on('click', function() {
+				location.href='${path}/login'
+			});
+			
+			$('#join').on('click', function() {
+				location.href='${path}/member/join'
+			});
+			
+			$('#btnSerch').on('click', function() {		
+				var bname = $('#bname').val();
+				location.href='${path}/book/serch?bname='+bname;
+			});
+			
+			$('#login').on('click', function() {
+				location.href='${path}/login'
+			});	
+
+			$('#logout').on('click', function() {
+				location.href='${path}/logout'
+			});
+			
+			
 			
 			
 		});
@@ -78,20 +142,27 @@
 						
 
 						<li>
-							<a  class="page-scroll" href="${path}/member/modify?email=${sessionScope.userid}">${sessionScope.userid}님 반갑습니다.</a>  
+							<c:if test="${sessionScope.userid!=''}">
+								<a  class="page-scroll" id="loginInfo" href="${path}/member/modify?email=${sessionScope.userid}">${sessionScope.userid}님 반갑습니다.</a>  
+							</c:if>
+		
 						</li>
 						
 						<li>
-							<a class="page-scroll" href="#about">로그인</a>
+							<a class="page-scroll" id="logout" href="#about">로그아웃</a>
+						</li>
+						
+						<li>
+							<a class="page-scroll" id="login" href="#about">로그인</a>
+						</li>						
+
+						
+						
+						<li>
+							<a class="page-scroll"  id="join" href="#portfolio">회원가입</a>
 						</li>
 						<li>
-							<a class="page-scroll" href="#portfolio">회원가입</a>
-						</li>
-						<li>
-							<a class="page-scroll" href="#team">좋아요</a>
-						</li>
-						<li>
-							<a class="page-scroll" href="#contact">고객센터</a>
+							<a class="page-scroll"   id="inquirygo" href="#contact">고객센터</a>
 						</li>
 					</ul>
 				</div>
@@ -138,7 +209,7 @@
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
 							<img src="${path}/resources/images/demo/notebook-gc9e023da0_640.jpg" alt="img02" class="img-responsive" />
-							<figcaption>
+							<figcaption id="newbook">
 								<h2>신규 도서</h2>
 								<p>New book</p>
 							</figcaption>
@@ -153,7 +224,7 @@
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
 							<img src="${path}/resources/images/demo/gfd675c671_640.jpg" alt="img02" class="img-responsive"id="reviewlist" />
-							<figcaption>
+							<figcaption id="">
 								<h2>리뷰 작성</h2>
 								<p>Review</p>
 								<a href="#" data-toggle="modal" data-target="#Modal-3">View more</a>
@@ -167,7 +238,7 @@
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
 							<img src="${path}/resources/images/demo/laptop-gf2c145cf9_640.jpg" alt="img02" class="img-responsive"id="inquiry" />
-							<figcaption>
+							<figcaption id="inquirygo1">
 								<h2>문의사항</h2>
 								<p>Inquiry</p>
 								<a href="#" data-toggle="modal" data-target="#Modal-4">View more</a>
@@ -195,39 +266,85 @@
 
 		<hr>
 		
+		
+	
+		
+		
+		
+		<div id="og" style="font-size: 20px;display: flex;justify-content: center;">
+			오시는길
+			<br>
+			<br>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=n49nsibd8d"></script>
-		<div id="map" style="width:300px;height:300px;"></div>
+		
+		<div id="under">
+			<div id="map" style="width:500px;height:300px;margin-left: 340px;float:left;">
+			</div>
+			
+
+			<div id="und">
+			
+				<div id="under1" style="font-size: 20px;">
+				<br>
+					Contact Details
+				</div>		
+					
+				<div id="under2" style="font-size: 15px;">
+				<br>
+					Addr : 서울 특별시 관악구 신림로 340 6층<br>
+					Tel : 010-1111-1111 <br>
+					Fax : +82-31-000-000 <br>
+					Email : llseys@naver.com <br><br><br><br><br><br><br><br><br><br>
+				</div>			
+			
+			</div>
+			
+
+			
+		</div>
+		
+
 		<script>
 		// 맵지도
 		var mapOptions = {
 		    center: new naver.maps.LatLng(37.484878, 126.930433),
-		    zoom: 17
+		    zoom: 16
 		};
 		var map = new naver.maps.Map('map', mapOptions);
 		</script>
 		
 		
 		
+<!-- 		<div id="under">
+			<div id="under1" style="font-size: 20px;">
+			<br>
+				Contact Detail
+			</div>
 		
-		<div id="under1" style="font-size: 20px;">
-		<br>
-			Contact Detail
+			<div id="under2" style="font-size: 15px;">
+			<br>
+				Addr : 서울 특별시 관악구 신림로 340 6층<br>
+				Tel : 010-1111-1111 <br>
+				Fax : +82-31-000-000 <br>
+				Email : llseys@naver.com <br><br>
+			</div>
 		</div>
-		
-		<div id="under2" style="font-size: 15px;">
-		<br>
-			Addr : 서울 특별시 관악구 신림로 340 6층<br>
-			Tel : 010-1111-1111 <br>
-			Fax : +82-31-000-000 <br>
-			Email : llseys@naver.com <br><br>
-		</div>
+		 -->
+
 
 		
-		
-
-
-
-
 
 
 

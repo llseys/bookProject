@@ -3,6 +3,7 @@ package org.company.my.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.company.my.dto.Member;
@@ -23,7 +24,7 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
-	
+
 	//회원가입폼으로 이동
 	@GetMapping(value="join")
 	public String join() {
@@ -47,10 +48,10 @@ public class MemberController {
 		rattr.addFlashAttribute("msg", msg);
 		System.out.println("코드 : " + code);
 		if(code.equals("1")) { //성공
-			//이메일 인증번호를 세션에 넣기
+			//이메일 인증번호(만든거)를 세션에 넣기 
 			session.setAttribute("authCode", result.get("authCode"));
 			// 이메일인증(링크클릭)되면 'emailauth' 컬럼을 변경해야하기에 세션에 이메일을 올린다
-			// 근데 로그인전인데 로그인할때도 세션에 이메일을 올리는데 이름이 겹친다 그래서 authemail로 바꿨다
+			// 근데 로그인전인데 로그인할때도 세션에 이메일을 올리는데 명이 겹친다 그래서 authemail로 바꿨다
 			session.setAttribute("authemail", member.getUserid()); 
 			
 			return "redirect:/login";
@@ -122,8 +123,7 @@ public class MemberController {
 			return "redirect:modify?userid="+userid;
 		}
 	}
-	
-	
+
 	
 	
 	

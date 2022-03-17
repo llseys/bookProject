@@ -19,7 +19,7 @@
 
 
 	$(function() {
-		$('.submit-btn').on('click', function() {
+		$('#btnLogin').on('click', function() {
 			
 			var userid = $('#userid').val();
 			var userpw = $('#userpw').val();

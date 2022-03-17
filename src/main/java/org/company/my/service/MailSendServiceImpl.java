@@ -42,7 +42,7 @@ public class MailSendServiceImpl implements MailSendService{
 		//로컬
 //		content.append("<a href='http://localhost:8081/my/member/joinConfirm?authCode="+authCode+"'>이메일인증확인</a>");
 		//실서버 (경로 공인ip)
-		content.append("<a href='http://115.85.182.210:8080/my/member/joinConfirm?authCode="+authCode+"'>이메일인증확인</a>");
+		content.append("<a href='http://115.85.182.210:8080/mybook/member/joinConfirm?authCode="+authCode+"'>이메일인증확인</a>");
 		
 		
 		//보낼메일 객체 생성

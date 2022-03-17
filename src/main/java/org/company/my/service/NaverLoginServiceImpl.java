@@ -35,7 +35,7 @@ public class NaverLoginServiceImpl implements NaverLoginService{
 //	    로컬에서 테스트
 //	    String redirectURI = URLEncoder.encode("http://localhost:8081/my/naver_callback", "UTF-8"); //콜백주소
 //	    //실서버에서 테스트 
-	    String redirectURI = URLEncoder.encode("http://115.85.182.210:8080/myapp/naver_callback", "UTF-8"); //콜백주소
+	    String redirectURI = URLEncoder.encode("http://115.85.182.210:8080/mybook/naver_callback", "UTF-8"); //콜백주소
 	    
 	    SecureRandom random = new SecureRandom(); 
 	    String state = new BigInteger(130, random).toString(); //인증값을 생성(보안)
@@ -72,7 +72,7 @@ public class NaverLoginServiceImpl implements NaverLoginService{
 //		    String code = request.getParameter("code");
 //		    String state = request.getParameter("state");
 //		    String redirectURI = URLEncoder.encode("http://localhost:8081/my/naver_callback", "UTF-8");
-		    String redirectURI = URLEncoder.encode("http://115.85.182.210:8080/myapp/naver_callback", "UTF-8");
+		    String redirectURI = URLEncoder.encode("http://115.85.182.210:8080/mybook/naver_callback", "UTF-8");
 		    String apiURL;
 		    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 		    apiURL += "client_id=" + clientId;

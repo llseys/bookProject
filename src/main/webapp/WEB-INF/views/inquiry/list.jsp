@@ -60,11 +60,26 @@
 		color: black;
 	
 	}
+	
+	#inquiryAdd{
+		margin-left: 280px;
+	
+	
+	}
+	a:link {
+	  color : black;
+	}
+	a:visited {
+	  color : black;
+	}
+	
+	
 </style>
 </head>
 <body>
 	<h1>문의사항</h1>
-	<br><br>
+	<br><br><br>
+	<a id="inquiryAdd" href="${path}/inquiry/add">글쓰기</a>
 	
 <%-- 	<c:forEach var="inq" items="${inqList}">
 		${inq.inquiryno} 
@@ -76,7 +91,6 @@
 		<tr>
 			<td>no</td>
 			<td>subject</td>
-			<td>content</td>
 			<td>name</td>
 			<td>date</td>
 			<td>hit</td>
@@ -85,7 +99,6 @@
 			<tr>
 				<td>${inq.inquiryno}</td>
 				<td><a href="${path}/inquiry/detail?inquiryno=${inq.inquiryno}">${inq.subject}</a></td>
-				<td>${inq.content}</td>
 				<td>${inq.userid}</td>
 				<td>${inq.regidate}</td>
 				<td>${inq.readhit}</td>

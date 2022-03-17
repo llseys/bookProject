@@ -39,13 +39,21 @@
 		where title like '%'||#{bname}||'%'	
 	</select> -->
 	
-	<select id="selectList" resultType="Book">
+<!-- 	<select id="selectList" resultType="Book">
 		select * 
 		from(select rownum rnum, b.*
 		        from (select * from book
 		        		where title like CONCAT('%',#{bname},'%')) b)
 		where rnum between #{startNum} and #{endNum}	
-	</select>
+	</select> -->
+	
+	<select id="selectList" resultType="Book">
+			select * from book
+			where title like CONCAT('%',#{bname},'%')
+			limit #{startNum}, #{perPage}  	
+	</select> 	
+	
+	
 	
 
 	<select id="selectOne" resultType="Book">
@@ -53,20 +61,38 @@
 		where isbn=#{isbn}
 	</select>
 	
-	<select id="bestSelectList" resultType="Book">
+<!-- 	<select id="bestSelectList" resultType="Book">
 		select * 
 		from(select rownum rnum, b.*
 		        from (select * from book
 		        		where bookkind='b') b)
 		where rnum between #{startNum} and #{endNum}	
-	</select>
+	</select> -->
 	
-	<select id="newSelectList" resultType="Book">
+	
+	<select id="bestSelectList" resultType="Book">
+		select * from book
+		where bookkind='b'
+		limit #{startNum}, #{perPage}  	
+	</select> 	
+	
+	
+	
+<!-- 	<select id="newSelectList" resultType="Book">
 		select * 
 		from(select rownum rnum, b.*
 		        from (select * from book
 		        		where bookkind='n') b)
 		where rnum between #{startNum} and #{endNum}	
-	</select>
+	</select> -->
+	
+	
+	<select id="newSelectList" resultType="Book">
+		select * from book
+		where bookkind='n'
+		limit #{startNum}, #{perPage}  	
+	</select> 
+	
+	
 	
 </mapper>

@@ -27,17 +27,16 @@
 		<tr>
 			<td>no</td>
 			<td>subject</td>
+			<td>content</td>
 			<td>name</td>
 			<td>hit</td>
 		</tr>
 		<tr>
 			<td>${inq.inquiryno}</td>
 			<td>${inq.subject}</td>
+			<td>${inq.content}</td>
 			<td>${nicname}</td>
 			<td>${inq.readhit}</td>						
-		</tr>
-		<tr>
-			<td>${inq.content}</td>
 		</tr>
 	</table>
 	
